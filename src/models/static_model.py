@@ -1,5 +1,5 @@
-from keras.layers import Input, Dense, Activation, Concatenate, Lambda
-from keras.models import Model
+from tensorflow.keras.layers import Input, Dense, Activation, Concatenate, Lambda
+from tensorflow.keras.models import Model
 
 from models.task_model import TaskModel
 from utils.consts import TLP, NC

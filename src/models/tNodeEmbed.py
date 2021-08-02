@@ -7,8 +7,8 @@ from tqdm import tqdm
 from node2vec import Node2Vec
 from scipy.linalg import orthogonal_procrustes
 
-from keras.layers import Input, LSTM, Dense, Activation, Concatenate, Lambda
-from keras.models import Model
+from tensorflow.keras.layers import Input, LSTM, Dense, Activation, Concatenate, Lambda
+from tensorflow.keras.models import Model
 
 import loader
 from models.task_model import TaskModel
