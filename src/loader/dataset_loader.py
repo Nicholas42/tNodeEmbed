@@ -44,7 +44,7 @@ def load_dataset(dataset_name: str):
     else:
         raise Exception('dataset not available')
 
-    dump_folder.mkdir(exists_ok=True)
+    dump_folder.mkdir(exist_ok=True)
 
     return graph_nx, dump_folder
 
