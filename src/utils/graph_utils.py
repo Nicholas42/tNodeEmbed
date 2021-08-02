@@ -81,9 +81,7 @@ def get_graph_T(graph_nx, min_time=-np.inf, max_time=np.inf, return_df=False):
         if min_time < attr['time'] and attr['time'] <= max_time:
             relevant_edges.append((u, v, *attr.values()))
 
-            if attr_keys != [] and attr_keys != attr.keys():
-                raise Exception('attribute keys in \'get_graph_T\' are different')
-            attr_keys = attr.keys()
+    attr_keys = attr.keys()
 
     graph_df = pd.DataFrame(relevant_edges, columns=['from', 'to', *attr_keys])
 
