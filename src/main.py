@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from math import ceil
 
 import models
@@ -44,4 +45,11 @@ def run(**kwargs):
 
 
 if __name__ == '__main__':
+    parser = ArgumentParser()
+    parser.add_argument('--dataset')
+
+    args = vars(parser.parse_args())
+    overwrite = dict((k,v) for k,v in args.items() if v is not None)
+    params.update(overwrite)
+
     run(**params)
