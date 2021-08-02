@@ -1,9 +1,9 @@
-python>=3.6
-networkx
-numpy
-tqdm
-pandas
 keras
 matplotlib
+networkx
 node2vec
+numpy
+pandas
 sklearn
+tqdm
+tensorflow
