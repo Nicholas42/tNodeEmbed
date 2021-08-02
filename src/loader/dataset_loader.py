@@ -4,14 +4,11 @@ from datetime import datetime
 import networkx as nx
 import pandas as pd
 
-def read_konect_timestamp(stamp):
-    return datetime.fromtimestamp(float(stamp))
-    
 
 def load_konect(path):
     with open(path) as f:
         non_comment = filter(lambda x: not x.startswith('%'), f)
-        return nx.parse_edgelist(non_comment, create_using=nx.DiGraph, data=[('weight', float), ('time', read_konect_timestamp)])
+        return nx.parse_edgelist(non_comment, create_using=nx.DiGraph, data=[('weight', float), ('time', float)])
 
 
 def load_dataset(dataset_name: str):
