@@ -4,9 +4,17 @@ from datetime import datetime
 import networkx as nx
 import pandas as pd
 
+def read_konect_timestamp(stamp):
+    return datetime.fromtimestamp(float(stamp))
+    
+
+def load_konect(path):
+    with open(path) as f:
+        non_comment = filter(lambda x: not x.startswith('%'), f)
+        return nx.parse_edgelist(non_comment, create_using=nx.DiGraph, data=[('weight', float), ('time', read_konect_timestamp)])
 
 
-def load_dataset(dataset_name):
+def load_dataset(dataset_name: str):
     '''
     This function is responsible of receiving the dataset name and access the right folder, read and create the graph.
     Args:
@@ -30,6 +38,9 @@ def load_dataset(dataset_name):
                         axis='columns', inplace=True)
         graph_nx = nx.from_pandas_edgelist(graph_df, 'from', 'to', edge_attr=[
                                            'time'], create_using=nx.Graph())
+    elif dataset_name.endswith('_konect'):
+        datafile = f'out.{dataset_name[:-len("_konect")]}'
+        graph_nx = load_konect(folder_path / datafile)
     else:
         raise Exception('dataset not available')
 
