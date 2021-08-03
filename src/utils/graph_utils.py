@@ -84,7 +84,7 @@ def get_graph_T(graph_nx, min_time=-np.inf, max_time=np.inf, return_df=False):
         sub_graph_nx: networkx - subgraph with only edges between min_time and max_time
     '''
     relevant_edges = []
-    attr_keys = []
+    attr_keys = ['time']
 
     if len(graph_nx.nodes()) == 0:
         return graph_nx
@@ -92,8 +92,6 @@ def get_graph_T(graph_nx, min_time=-np.inf, max_time=np.inf, return_df=False):
     for u, v, attr in graph_nx.edges(data=True):
         if min_time < attr['time'] and attr['time'] <= max_time:
             relevant_edges.append((u, v, *attr.values()))
-
-    attr_keys = attr.keys()
 
     graph_df = pd.DataFrame(relevant_edges, columns=['from', 'to', *attr_keys])
 
