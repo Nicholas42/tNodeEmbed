@@ -6,6 +6,18 @@ import warnings
 from tqdm import tqdm
 
 
+def normalize_time(graph_nx):
+    '''
+    Replace times by their index in the sorted list of all unique times.
+    '''
+
+    times = sorted(set(e[2]['time'] for e in graph_nx.edges(data=True)))
+    reverse_dict = dict((time, index) for index, time in enumerate(times))
+
+    for e in graph_nx.edges(data=True):
+        graph_nx[e[0]][e[1]]['time'] = reverse_dict[e[2]['time']]
+
+
 def random_false_edges(graph_nx, num):
     '''
     Sample false edges from a graph
