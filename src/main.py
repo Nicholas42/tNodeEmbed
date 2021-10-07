@@ -13,7 +13,7 @@ from utils import graph_utils
 def run(**kwargs):
     # load graph
     graph_nx, dump_folder = loader.load_dataset(kwargs['dataset'])
-    graph_utils.normalize_time(graph_nx)
+    # graph_utils.normalize_time(graph_nx)
 
     # initialize tNodeEmbed
     task = kwargs['task']
