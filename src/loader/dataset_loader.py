@@ -36,7 +36,7 @@ def load_dataset(dataset_name: str):
         graph_nx = nx.from_pandas_edgelist(graph_df, 'from', 'to', edge_attr=[
                                            'time'], create_using=nx.Graph())
     elif dataset_name.endswith('_konect'):
-        datafile = folder_path / f'out.{dataset_name[:-len("_konect")]}'
+        datafile = folder_path / f'{dataset_name[:-len("_konect")]}.csv'
         graph_df = pd.read_csv(datafile, sep=',', usecols=[
                                'from', 'to', 'time'])
         graph_nx = nx.from_pandas_edgelist(graph_df, 'from', 'to', edge_attr=[
